@@ -30,7 +30,7 @@ $(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera/config.mk)
 COMMON_PATH := device/xiaomi/sdm660-common
 
 # R HALs
-OVERRIDE_QCOM_HARDWARE_VARIANT := msm8998-r
+OVERRIDE_QCOM_HARDWARE_VARIANT := msm8998
 
 # A/B
 ifeq ($(ENABLE_AB), true)
