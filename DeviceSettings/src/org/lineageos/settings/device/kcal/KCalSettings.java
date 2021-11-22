@@ -52,25 +52,33 @@ public class KCalSettings extends PreferenceFragment implements
         setPreferencesFromResource(R.xml.preferences_kcal, rootKey);
 
         boolean enabled = Settings.Secure.getInt(getContext().getContentResolver(), PREF_ENABLED,
-                0) == 1;
+                ENABLED_DEFAULT ? 1 : 0) == 1;
 
         mEnabled = (SecureSettingSwitchPreference) findPreference(PREF_ENABLED);
         mEnabled.setOnPreferenceChangeListener(this);
         mEnabled.setTitle(enabled ? R.string.kcal_enabled : R.string.kcal_disabled);
+        mEnabled.setDefaultValue(enabled);
 
         mSetOnBoot = (SecureSettingSwitchPreference) findPreference(PREF_SETONBOOT);
         mSetOnBoot.setOnPreferenceChangeListener(this);
+        mSetOnBoot.setDefaultValue(SETONBOOT_DEFAULT);
 
         mMin = (SecureSettingCustomSeekBarPreference) findPreference(PREF_MINIMUM);
         mMin.setOnPreferenceChangeListener(this);
 
         mRed = (SecureSettingCustomSeekBarPreference) findPreference(PREF_RED);
+        mRed.setMax(RED_DEFAULT);
+        mRed.setValue(RED_DEFAULT);
         mRed.setOnPreferenceChangeListener(this);
 
         mGreen = (SecureSettingCustomSeekBarPreference) findPreference(PREF_GREEN);
+        mGreen.setMax(GREEN_DEFAULT);
+        mGreen.setValue(GREEN_DEFAULT);
         mGreen.setOnPreferenceChangeListener(this);
 
         mBlue = (SecureSettingCustomSeekBarPreference) findPreference(PREF_BLUE);
+        mBlue.setMax(BLUE_DEFAULT);
+        mBlue.setValue(BLUE_DEFAULT);
         mBlue.setOnPreferenceChangeListener(this);
 
         mSaturation = (SecureSettingCustomSeekBarPreference) findPreference(PREF_SATURATION);
@@ -152,9 +160,9 @@ public class KCalSettings extends PreferenceFragment implements
 
     void applyValues(String preset) {
         String[] values = preset.split(" ");
-        int red = Integer.parseInt(values[0]);
-        int green = Integer.parseInt(values[1]);
-        int blue = Integer.parseInt(values[2]);
+        int red = Utils.getFinalColorValue(Integer.parseInt(values[0]));
+        int green = Utils.getFinalColorValue(Integer.parseInt(values[1]));
+        int blue = Utils.getFinalColorValue(Integer.parseInt(values[2]));
         int min = Integer.parseInt(values[3]);
         int sat = Integer.parseInt(values[4]);
         int value = Integer.parseInt(values[5]);
