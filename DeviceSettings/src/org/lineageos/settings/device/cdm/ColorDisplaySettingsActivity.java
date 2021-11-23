@@ -14,7 +14,7 @@
  * limitations under the License
  */
 
-package org.lineageos.settings.device.kcal;
+package org.lineageos.settings.device.cdm;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -25,23 +25,23 @@ import android.view.MenuItem;
 
 import org.lineageos.settings.device.R;
 
-public class KCalSettingsActivity extends Activity implements Utils {
+public class ColorDisplaySettingsActivity extends Activity implements Utils {
 
-    private KCalSettings mKCalSettingsFragment;
+    private ColorDisplaySettings mColorDisplaySettingsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kcal);
+        setContentView(R.layout.activity_cdm);
 
-        Fragment fragment = getFragmentManager().findFragmentById(R.id.fragment_kcal);
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.fragment_cdm);
         if (fragment == null) {
-            mKCalSettingsFragment = new KCalSettings();
+            mColorDisplaySettingsFragment = new ColorDisplaySettings();
             getFragmentManager().beginTransaction()
-                    .add(R.id.fragment_kcal, mKCalSettingsFragment)
+                    .add(R.id.fragment_cdm, mColorDisplaySettingsFragment)
                     .commit();
         } else {
-            mKCalSettingsFragment = (KCalSettings) fragment;
+            mColorDisplaySettingsFragment = (ColorDisplaySettings) fragment;
         }
     }
 
@@ -53,21 +53,14 @@ public class KCalSettingsActivity extends Activity implements Utils {
                 return true;
 
             case R.id.action_reset:
-                mKCalSettingsFragment.applyValues(RED_DEFAULT + " " +
+                mColorDisplaySettingsFragment.applyValues(RED_DEFAULT + " " +
                         GREEN_DEFAULT + " " +
-                        BLUE_DEFAULT + " " +
-                        MINIMUM_DEFAULT + " " +
-                        SATURATION_DEFAULT + " " +
-                        VALUE_DEFAULT + " " +
-                        CONTRAST_DEFAULT + " " +
-                        HUE_DEFAULT);
-                mKCalSettingsFragment.setmGrayscale(GRAYSCALE_DEFAULT);
-                mKCalSettingsFragment.setmSetOnBoot(SETONBOOT_DEFAULT);
+                        BLUE_DEFAULT);
                 return true;
 
             case R.id.action_preset:
                 new PresetDialog().show(getFragmentManager(),
-                        KCalSettingsActivity.class.getName(), mKCalSettingsFragment);
+                        ColorDisplaySettingsActivity.class.getName(), mColorDisplaySettingsFragment);
                 return true;
 
             default:

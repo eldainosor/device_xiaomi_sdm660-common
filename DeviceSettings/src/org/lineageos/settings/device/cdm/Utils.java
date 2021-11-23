@@ -14,7 +14,7 @@
  * limitations under the License
  */
 
-package org.lineageos.settings.device.kcal;
+package org.lineageos.settings.device.cdm;
 
 import java.io.InputStreamReader;
 import java.io.InputStream;
@@ -26,9 +26,9 @@ public interface Utils {
     String PREF_ENABLED = "kcal_enabled";
     String PREF_SETONBOOT = "set_on_boot";
     String PREF_MINIMUM = "color_minimum";
-    String PREF_RED = "color_red";
-    String PREF_GREEN = "color_green";
-    String PREF_BLUE = "color_blue";
+    String PREF_RED = "display_color_balance_red";
+    String PREF_GREEN = "display_color_balance_green";
+    String PREF_BLUE = "display_color_balance_blue";
     String PREF_SATURATION = "saturation";
     String PREF_VALUE = "value";
     String PREF_CONTRAST = "contrast";

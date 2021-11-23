@@ -23,7 +23,7 @@ import androidx.preference.PreferenceFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 
-import org.lineageos.settings.device.kcal.KCalSettingsActivity;
+import org.lineageos.settings.device.cdm.ColorDisplaySettingsActivity;
 import org.lineageos.settings.device.speaker.ClearSpeakerActivity;
 import org.lineageos.settings.device.preferences.SecureSettingListPreference;
 import org.lineageos.settings.device.preferences.SecureSettingSwitchPreference;
@@ -68,7 +68,7 @@ public class DeviceSettings extends PreferenceFragment implements
 
     private static final String CATEGORY_DISPLAY = "display";
     private static final String PREF_DEVICE_DOZE = "device_doze";
-    private static final String PREF_DEVICE_KCAL = "device_kcal";
+    private static final String PREF_DEVICE_CDM = "device_cdm";
 
     private static final String DEVICE_DOZE_PACKAGE_NAME = "com.advanced.settings.doze";
 
@@ -144,10 +144,10 @@ public class DeviceSettings extends PreferenceFragment implements
         //FPS Info
         SecureSettingSwitchPreference fpsInfo = (SecureSettingSwitchPreference) findPreference(PREF_KEY_FPS_INFO);
         fpsInfo.setOnPreferenceChangeListener(this);
-        // KCAL
-        Preference kcal = findPreference(PREF_DEVICE_KCAL);
-        kcal.setOnPreferenceClickListener(preference -> {
-            Intent intent = new Intent(getActivity().getApplicationContext(), KCalSettingsActivity.class);
+        // Color Display Manager
+        Preference cdm = findPreference(PREF_DEVICE_CDM);
+        cdm.setOnPreferenceClickListener(preference -> {
+            Intent intent = new Intent(getActivity().getApplicationContext(), ColorDisplaySettingsActivity.class);
             startActivity(intent);
             return true;
         });

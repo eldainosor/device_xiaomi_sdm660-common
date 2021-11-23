@@ -118,14 +118,14 @@
                 android:targetPackage="com.advanced.settings.doze" />
         </Preference>
         <Preference
-            android:key="device_kcal"
+            android:key="device_cdm"
             android:persistent="false"
             android:title="@string/device_kcal_title"
             android:icon="@drawable/ic_color">
             <intent
                 android:action="android.intent.action.MAIN"
-                android:targetClass="org.lineageos.settings.kcal.KCalSettingsActivity"
-                android:targetPackage="org.lineageos.settings.kcal" />
+                android:targetClass="org.lineageos.settings.cdm.ColorDisplaySettingsActivity"
+                android:targetPackage="org.lineageos.settings.cdm" />
         </Preference>
         <org.lineageos.settings.device.preferences.SecureSettingSwitchPreference
             android:key="fps_info"

@@ -1,4 +1,4 @@
-package org.lineageos.settings.device.kcal;
+package org.lineageos.settings.device.cdm;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -13,7 +13,7 @@ public class PresetDialog extends DialogFragment {
     private CharSequence[] mEntries;
     private CharSequence[] mEntryValues;
     private String mValue;
-    private KCalSettings mKCalSettingsFragment;
+    private ColorDisplaySettings mCDMSettingsFragment;
     private int mClickedDialogEntryIndex;
     private final DialogInterface.OnClickListener selectItemListener =
             new DialogInterface.OnClickListener() {
@@ -22,7 +22,7 @@ public class PresetDialog extends DialogFragment {
                 public void onClick(DialogInterface dialog, int which) {
                     if (mClickedDialogEntryIndex != which) {
                         mValue = mEntryValues[which].toString();
-                        mKCalSettingsFragment.applyValues(mValue);
+                        mCDMSettingsFragment.applyValues(mValue);
                         mClickedDialogEntryIndex = which;
                     }
                     dialog.dismiss();
@@ -60,8 +60,8 @@ public class PresetDialog extends DialogFragment {
         return -1;
     }
 
-    public void show(FragmentManager manager, String tag, KCalSettings mKCalSettingsFragment) {
+    public void show(FragmentManager manager, String tag, ColorDisplaySettings mCDMSettingsFragment) {
         super.show(manager, tag);
-        this.mKCalSettingsFragment = mKCalSettingsFragment;
+        this.mCDMSettingsFragment = mCDMSettingsFragment;
     }
 }
